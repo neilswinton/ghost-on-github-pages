@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
-set -ex
+
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+
+    case $key in
+        -d|--debug)
+            shift # past argument
+            set -x
+            ;;
+        --setup-only)
+            shift
+            setup_only=true
+            ;;
+    esac
+done
+
 HOME_PATH=$HOME
 GHOST_PATH="${HOME_PATH}/.ghost/"
 
@@ -114,6 +130,9 @@ local_run() {
 }
 
 local_setup
+if [ -n "$setup_only" ]; then
+    exit
+fi
 local_deps
 local_run
 move_includes
