@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 HOME_PATH=$HOME
 GHOST_PATH="${HOME_PATH}/.ghost/"
 
@@ -28,7 +29,7 @@ local_setup() {
 		cd "$GHOST_PATH"
 	
 		# Installing Ghost CLI
-		npm i -g ghost-cli@latest
+		sudo npm i -g ghost-cli@latest
 
 		# Installing local version of Ghost
 		echo '[INFO] Trying to install Ghost using Ghost-CLI...'
